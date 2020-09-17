@@ -2,30 +2,24 @@ package com.example.alevelapp;
 
 import java.util.HashMap;
 
-public class Credentials {
+class Credentials {
 
-    private String Username;
-    private String Password;
+    private HashMap<String, String> credentialsMapper = new HashMap<String, String>();
 
-    /* Constructor */
-    Credentials(String username, String password){
-        this.Username = username;
-        this.Password = password;
+    void addCredentials(String name, String password)
+    {
+        credentialsMapper.put(name, password);
     }
 
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String username) {
-        Username = username;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
+    boolean checkCredentials(String name, String password)
+    {
+        if(credentialsMapper.containsKey(name))
+        {
+            if(password.equals(credentialsMapper.get(name)))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
