@@ -1,0 +1,140 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOw8fuhqWmin2t9bNTU/Mas",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "ir",
+      "display_name": "R"
+    },
+    "language_info": {
+      "name": "R"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/firosibe/A-Level-App/blob/master/Question.rmd\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "CK5jBngd8m6o"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Chi-Squared Test fo Association\n",
+        "\n",
+        "\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## Question: Smoking and Exercise\n",
+        "\n",
+        "###### The following contingency table shows the number of individuals who either smoke or do not smoke and whether they exercise or not:\n",
+        "\n",
+        "|| Exercise | No Exercise |\n",
+        "|---------|----------|-------------|\n",
+        "|Smoke|50|30|\n",
+        "|Do Not Smoke|70|20|\n",
+        "\n",
+        "1. Test if smoking and exercise are independent at the α=0.05 significance level using the Chi-squared test for association\n",
+        "2. Compute and interpret Cramér’s \\(V\\) to assess the strength of the relationship  between smoking and exercise.\n",
+        "3. Discuss the practical implications of your results, considering potential confounding factors that may influence the association between smoking and exercise.\n",
+        "4. Identify any limitations of using the Chi-squared test in this scenario and suggest an alternative test if applicable.\n",
+        "\n",
+        "\n",
+        "\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## Solution\n",
+        "\n",
+        "<u>Hypothesis</u>\n",
+        "\n",
+        "$H_0$: Smoking and Exercise are independent <br>\n",
+        "$H_1$: Smoking and Exercise are not independent\n",
+        "\n",
+        "<u>Expected Frequencies</u>\n",
+        "\n",
+        "Total number of individuals:<br>\n",
+        "$50+30+70+20=170$<br><br>\n",
+        "\n",
+        "Row totals:<br>\n",
+        "For smokers: $50+30=80$ <br>\n",
+        "For non smokers: $70+20=90$<br><br>\n",
+        "\n",
+        "Column totals:<br>\n",
+        "For exercise: $50+70=120$<br>\n",
+        "For no exercise: $30+20=50$<br><br>\n",
+        "\n",
+        "Expected frequencies:<br>\n",
+        "$E_{11}=\\frac{(80)(120)}{170} = 56.47$<br>\n",
+        "$E_{12}=\\frac{(80)(50)}{170} = 23.53$<br>\n",
+        "$E_{21}=\\frac{(90)(120)}{170}=63.53$<br>\n",
+        "$E_{22}=\\frac{(90)(50)}{170} = 26.47$ <br><br>\n",
+        "\n",
+        "<u>Chi-Squared Statistic</u>\n",
+        "\n",
+        "$χ^2$=$\\sum\\frac{(O_i - E_i)^2}{E_i}=\\frac{(50-56.47)^2}{56.47} + \\frac{(30-23.53)^2}{23.53} + \\frac{(70-63.53)^2}{63.53} + \\frac{(20-26.47)^2}{26.47}$ <br>\n",
+        "$\\chi^2 = \\frac{(-6.47)^2}{56.47} + \\frac{(6.47)^2}{23.53} + \\frac{(6.47)^2}{63.53} + \\frac{(-6.47)^2}{26.47}$ <br>\n",
+        "$\\chi^2$= 0.759 + 1.775 + 0.656 + 1.517 = 3.33$<br><br>\n",
+        "\n",
+        "<u>Critical Value</u>\n",
+        "\n",
+        "Degrees of freedom: <br>\n",
+        "$df=(r-1)(c-1)=(2-1)(2-1)=1$<br>\n",
+        "From the Chi-squared distribution table, the critical value at α=0.05 for df=1 is $\\chi^2_{critical}=3.841$<br><br>\n",
+        "\n",
+        "<u>Decision</u>\n",
+        "\n",
+        "$3.33 < 3.841\\implies$ Fail to reject $H_0$<br>\n",
+        "Therefore smoking and exercise appear to be independent.\n",
+        "<br><BR><br>\n",
+        "\n",
+        "<u>Cramér</u>\n",
+        "\n",
+        "V=$\\sqrt{\\frac{χ^2}{n ⋅ min(r-1,c-1)}}$<br>\n",
+        "Where:<br>\n",
+        "- $χ^2=3.33$<br>\n",
+        "- $n=170$<br>\n",
+        "- $r=2$<br>\n",
+        "- $c=2$<br><br>\n",
+        "$\\therefore V=\\sqrt{\\frac{3.33}{170 ⋅ min(1,1)}}=\\sqrt{\\frac{3.33}{170}}=0.14$<br><BR>\n",
+        "\n",
+        "<u>Interpretation of V </u>\n",
+        "\n",
+        "V ranges from 0 (no association) to 1 (perfect association). A $V=0.14$ indicates a weak association between smoking and exercise.<br><BR>\n",
+        "\n",
+        "<u> Practical Implications</u>\n",
+        "\n",
+        "- While smoking and exercise are statistically independent based on the chi-squared test, the weak effect size suggests that the association, even if present, is minimal\n",
+        "- Potential factors such as age, socioeconomic status, or pre-existing health conditions may influence both smoking and exercise habits, and should be explored further in studies.<BR><BR>\n",
+        "\n",
+        "<u> Limitations of the Chi-Squared test </u>\n",
+        "\n",
+        "   - The Chi-squared test assumes that the expected frequency in each cell is at least 5. In this case, all expected frequencies (56.47, 23.53, 63.53, 26.47) are sufficiently large, so the assumption is met. <br>\n",
+        "   - For very small expected frequencies, a Fisher’s Exact Test could be a more appropriate choice.\n",
+        "   \n"
+      ],
+      "metadata": {
+        "id": "36Aj_JQN82ZH"
+      }
+    }
+  ]
+}
